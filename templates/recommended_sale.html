@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Product Sales Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/headnav.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/recommended_sale.css') }}">
+
+</head>
+
+<body>
+    <div class="headnav" id="sidebyside">
+        <div class="header">
+            <div style="width: 150px; height: 150px; background-color: grey; border-radius: 100px;"></div>
+        </div>
+        <div class="nav">
+            <nav>
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/recommend">RECOMMENDED SALE</a></li>
+                    <li><a href="/marketing_topic">MARKETING TOPIC</a></li>
+                    <li><a href="/ai_text">AI TEXT</a></li>
+                    <li><a href="/about_us">ABOUT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="sidebyside">
+        <div class="information">
+            <h2>RECOMMENDED PRODUCT SALES ANALYSIS</h2>
+            <div class="function">
+                <div id="alignment">
+                    <div id="title">
+                        Upload CSV File
+                    </div>
+                    <div id="details">
+                        {% if error %}
+                        <p style="color: red;">{{ error }}</p>
+                        {% endif %}
+                        {% if message %}
+                        <p style="color: green;">{{ message }}</p>
+                        {% endif %}
+                        <form action="/upload" autocomplete="on" method="POST" enctype="multipart/form-data">
+                            <input type=file name="marketing_csv">
+
+                            <button id="submission" type="submit">UPLOAD</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="alignment">
+                    <div id="button">
+                        <a href="/up_cross"><button type="toMarketingTopic">Product Items Sales Trend</button></a>
+                    </div>
+                    <div id="details">
+                        <a href="/campaign"><button type="toAIText">Recommended Product Items</button></a>
+                    </div>
+                    <div id="details">
+                        <a href="/dict"><button type="toAIText">Product Items References</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>COPYRIGHT &copy; 2023 YAP CHER EN. ALL RIGHTS RESERVED</p>
+        </div>
+    </div>
+
+</html>

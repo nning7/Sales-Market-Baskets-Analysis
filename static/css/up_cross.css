@@ -1,0 +1,14 @@
+div.information h2 {
+    font-family: Inter;
+    font-weight: 900;
+}
+
+button.go_back {
+    width: max-content;
+    height: 30px;
+    font-size: 12px;
+    border-radius:  5px;
+    font-family: Inter;
+    font-weight: 600;
+    cursor: pointer;
+}

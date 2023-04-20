@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Sales System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/headnav.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/market_product.css') }}">
+    <script>
+        function incrementValue(counter) {
+            counter++
+            return counter
+        }
+    </script>
+    <style>
+        .information {
+            overflow-y: scroll;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 0.5rem;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        /* Hide the scrollbar when not in use */
+        ::-webkit-scrollbar-thumb:vertical {
+            display: none;
+        }
+
+        /* Show the scrollbar when the element is hovered */
+        :hover::-webkit-scrollbar-thumb {
+            display: block;
+        }
+
+        /* Set the position of the scrollbar to the right side */
+        html,
+        body {
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headnav" id="sidebyside">
+        <div class="header">
+            <div style="width: 150px; height: 150px; background-color: grey; border-radius: 100px;"></div>
+        </div>
+        <div class="nav">
+            <nav>
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/recommend">RECOMMENDED SALE</a></li>
+                    <li><a href="/marketing_topic">MARKETING TOPIC</a></li>
+                    <li><a href="/ai_text">AI TEXT</a></li>
+                    <li><a href="/about_us">ABOUT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="sidebyside">
+        <div class="information">
+            <button onclick="history.back()" class="go_back">BACK</button>
+            <h2>Recommended Product Items</h2>
+            <div class="market_info">
+                <!-- add your code here -->
+                <form method="post">
+                    <label for="key">Select a merchant:</label>
+                    <select id="key" name="key">
+                        {% for key in my_dict.keys() %}
+                        <option value="{{ key }}" {% if key==selected_key %}selected{% endif %}>{{ key }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Submit">
+                </form>
+                {% if data1 %}
+                <h2>Cross Selling</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Purchased Item</th>
+                            <th>Recommended cross-selling item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data1 %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>
+                                {% for item in row[2] %}
+                                {{ item }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+                {% if data2 %}
+                <h2>Up Selling</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Purchased Item</th>
+                            <th>Recommended cross-selling item(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in data2 %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>
+                                {% for item in row[2] %}
+                                {{ item }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        </div>
+        <div class="footer">
+            <p>COPYRIGHT &copy; 2023 YAP CHER EN. ALL RIGHTS RESERVED</p>
+        </div>
+    </div>
+
+</html>

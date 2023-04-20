@@ -1,0 +1,39 @@
+html {
+    background-color: aliceblue;
+}
+
+div.headnav {
+    background-color: lightblue; 
+    width: 250px; 
+    height: 100%; 
+    position: fixed;
+    padding: 15px;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    border-radius: 0 150px 0 0;
+    box-shadow: 5px -5px 50px 5px grey;
+}
+
+div.information {
+    /* background-color: rgb(173, 248, 248); */
+    position: fixed;
+    left: 350px;
+    top: 50px;
+    bottom: 70px;
+    right: 30px;
+}
+
+div.footer {
+    background-color: lightblue; 
+    width: 100%; 
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+div#sidebyside {
+    float: left;
+}

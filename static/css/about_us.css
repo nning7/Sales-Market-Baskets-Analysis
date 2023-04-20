@@ -1,0 +1,37 @@
+div.information h2 {
+    font-family: Inter;
+    font-weight: 900;
+}
+
+div.members_detail {
+    min-width: max-content;
+}
+
+div.members_detail a button{
+    width: 150px;
+    height: 100px;
+    font-family: Inter;
+    font-weight: 700;
+}
+
+div#alignment {
+    padding-top: 50px;
+    margin-left: 30px;
+    height: 100px;
+    /* background-color: aqua; */
+}
+
+div#profpic,
+div#details {
+    float: left;
+}
+
+div#profpic img {
+    width: 150px;
+}
+
+div#details {
+    padding-left: 20px;
+    font-family: Inter;
+    font-size: 16px;
+}

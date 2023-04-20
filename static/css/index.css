@@ -1,0 +1,42 @@
+div.information h2 {
+    font-family: Inter;
+    font-weight: 900;
+}
+
+div.function {
+    min-width: max-content;
+}
+
+div.function a button{
+    width: 150px;
+    height: 100px;
+    font-family: Inter;
+    font-weight: 700;
+}
+
+div#alignment {
+    padding-top: 20px;
+}
+
+div#button,
+div#details {
+    float: left;
+}
+
+div#alignment {
+    margin-left: 30px;
+    height: 100px;
+    /* background-color: aqua; */
+}
+
+div#details {
+    padding-left: 20px;
+    font-family: Inter;
+    font-size: 16px;
+}
+
+button{
+    border-radius: 20px 0.5px;
+    background-color: azure;
+    cursor: pointer;
+}

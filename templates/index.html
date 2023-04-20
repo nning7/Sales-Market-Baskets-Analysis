@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ads & AI Leads</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/headnav.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+    <div class="headnav" id="sidebyside">
+        <div class="header">
+            <div style="width: 150px; height: 150px; background-color: grey; border-radius: 100px;"></div>
+        </div>
+        <div class="nav">
+            <nav>
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/recommend">RECOMMENDED SALE</a></li>
+                    <li><a href="marketing_topic.html">MARKETING TOPIC</a></li>
+                    <li><a href="ai_text.html">AI TEXT</a></li>
+                    <li><a href="about_us.html">ABOUT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="sidebyside">
+        <div class="information">
+            <h2>WELCOME TO OUR ADVERTISEMENT GENERATOR & ANALYSIS SYSTEM</h2>
+            <div class="function">
+                <div id="alignment">
+                    <div id="button">
+                        <a href="/recommend"><button type="toRecommendedSale">RECOMMENDED SALE</button></a>
+                    </div>
+                    <div id="details">
+                        <li>Upload Sales Data</li>
+                        <li>Analyse Up & Cross Selling</li>
+                        <li>Market Products Campaign</li>
+                    </div>
+                </div>
+                <div id="alignment">
+                    <div id="button">
+                        <a href="marketing_topic.html"><button type="toMarketingTopic">MARKETING TOPIC</button></a>
+                    </div>
+                    <div id="details">
+                        <li>Upload Marketing Post</li>
+                        <li>Analyse Hot Marketing Post</li>
+                        <li>Sentiment Analysis of Post on Reaction</li>
+                        <li>Product Text Quality</li>
+                    </div>
+                </div>
+                <div id="alignment">
+                    <div id="button">
+                        <a href="ai_text.html"><button type="toAIText">AI TEXT</button></a>
+                    </div>
+                    <div id="details">
+                        <li>OPT</li>
+                        <li>LSTM</li>
+                    </div>
+                </div>
+                <div id="alignment">
+                    <div id="button">
+                        <a href="about_us.html"><button type="toSale">ABOUT US</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>COPYRIGHT &copy; 2023 YAP CHER EN. ALL RIGHTS RESERVED</p>
+        </div>
+    </div>
+
+</html>

@@ -1,0 +1,49 @@
+div.header {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding-top: 50px;
+}
+
+div.nav {
+    padding-top: 25px;
+    font-family: Inter;
+    font-weight: 800;
+}
+
+div.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+}
+
+div.nav nav li{
+    padding-top: 15px;
+    padding-right: 10px;
+    text-align: right;
+    font-size: 22px;
+}
+
+div.nav nav li a{
+    text-decoration: none;
+    color: darkslategrey;
+    transition: transform .1s;
+}
+
+div.nav nav li a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+div.footer p{
+    font-family: Inter;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 600;
+    padding: 0;
+    padding-top: 5px;
+    color: darkslategrey;
+}

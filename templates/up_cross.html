@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Sales System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/headnav.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/up_cross.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input[type=radio][name=graph_type]').change(function () {
+                var foodName = $('#food_name').val();
+                var graphType = $('input[type=radio][name=graph_type]:checked').val();
+                window.location.href = '/plot?food_name=' + foodName + '&graph_type=' + graphType;
+            });
+        });
+
+
+
+    </script>
+    <style>
+        .information {
+            overflow-y: scroll;
+        }
+
+        .container {
+            display: flex;
+            overflow: auto;
+        }
+
+
+        .table {
+
+            overflow-y: scroll;
+        }
+
+        table {
+            margin-left: auto;
+            border-collapse: collapse;
+            width: 40%;
+            margin-bottom: 1rem;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 0.5rem;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        /* Hide the scrollbar when not in use */
+        ::-webkit-scrollbar-thumb:vertical {
+            display: none;
+        }
+
+        /* Show the scrollbar when the element is hovered */
+        :hover::-webkit-scrollbar-thumb {
+            display: block;
+        }
+
+        /* Set the position of the scrollbar to the right side */
+        html,
+        body {
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headnav" id="sidebyside">
+        <div class="header">
+            <div style="width: 150px; height: 150px; background-color: grey; border-radius: 100px;"></div>
+        </div>
+        <div class="nav">
+            <nav>
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/recommend">RECOMMENDED SALE</a></li>
+                    <li><a href="/marketing_topic">MARKETING TOPIC</a></li>
+                    <li><a href="/ai_text">AI TEXT</a></li>
+                    <li><a href="/about_us">ABOUT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="sidebyside">
+        <div class="information">
+            <button onclick="history.back()" class="go_back">BACK</button>
+            <h2>Product Items Sales Trend</h2>
+            <div class="container">
+                <div class="graphs">
+                    <!-- add your code here -->
+                    <h3>Sales Trend Plotter</h1>
+                        <form action="/plot" method="post">
+                            <label for="food_name">Food Name:</label>
+                            <input type="text" id="food_name" name="food_name">
+                            <button type="submit">Plot</button>
+                        </form>
+                        <br>
+                        <label for="graph_type">Select graph type:</label>
+                        <br>
+                        <input type="radio" name="graph_type" value="daily"> Daily
+                        <input type="radio" name="graph_type" value="weekly"> Weekly
+                        <input type="radio" name="graph_type" value="monthly"> Monthly
+                        {% if graph_type == 'daily' %}
+                        <h3>Daily sales trend for {{ name }}</h3>
+                        <img src="{{ url_for('static', filename='day_plot.png') }}">
+                        {% elif graph_type == 'weekly' %}
+                        <h3>Weekly sales trend for {{ name }}</h3>
+                        <img src="{{ url_for('static', filename='week_plot.png') }}">
+                        {% elif graph_type == 'monthly' %}
+                        <h3>Monthly sales trend for {{ name }}</h3>
+                        <img src="{{ url_for('static', filename='month_plot.png') }}">
+                        {% endif %}
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Food Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for food_name in food_list %}
+                        <tr>
+                            <td>
+                                <form action="/plot" method="post">
+                                    <input type="hidden" name="food_name" value="{{ food_name }}">
+                                    <button type="submit"
+                                        style="border: none; background-color: transparent; cursor: pointer;">{{
+                                        food_name
+                                        }}</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+
+
+
+
+        <div class="footer">
+            <p>COPYRIGHT &copy; 2023 YAP CHER EN. ALL RIGHTS RESERVED</p>
+        </div>
+    </div>
+
+</html>
